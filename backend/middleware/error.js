@@ -1,7 +1,8 @@
 const ErrorHandler=require("../utils/errorHandler")
 
-module.exports=(err,reg,res,next)=>{
-    err.statusCde=err.statusCde || 500
+module.exports=(err,req,res,next)=>{
+    console.log("error: ",err)
+    err.statusCode=err.statusCode || 500
     err.message = err.message || "Internal server error"
 
     //wrong mongodb id error
@@ -33,8 +34,8 @@ module.exports=(err,reg,res,next)=>{
         err=new ErrorHandler(message,400);
     }
 
-    res.status(err.statusCde.json({
+    res.status(err.statusCode).json({
         success:false,
         message:err.message,
-    }))
+    })
 }

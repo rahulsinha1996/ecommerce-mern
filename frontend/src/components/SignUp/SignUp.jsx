@@ -1,23 +1,47 @@
 import React, { useState } from 'react'
 import styles from "../../styles/styles"
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"
-import {RxAvatar} from "react-icons/rx";
+import { RxAvatar } from "react-icons/rx";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { server } from '../../server';
+import { toast } from 'react-toastify';
 
 const SignUp = () => {
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
     const [visible, setVisible] = useState(false);
-    const [avatar, setAvatar]=useState(null);
+    const [avatar, setAvatar] = useState(null);
 
 
-    const handleSubmit=()=>{
-        console.log("Submitted")
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const config = {
+            headers: {
+                "Content-Type": "multiplart/form-data"
+            }
+        }
+        const newForm = new FormData();
+        newForm.append("file", avatar);
+        newForm.append('name', name);
+        newForm.append('email', email);
+        newForm.append('password',password);
+
+        axios.post(`${server}/user/create-user`, newForm, config).then((res) => {
+            console.log(res)
+            toast.success(res.data.message)
+            setName("");
+            setEmail("");
+            setPassword("");
+            setAvatar("");
+        }).catch((err) => {
+           toast.error(err.response.data.message)
+        })
     }
 
-    const handleFileInputChange=(e)=>{
-        const file=e.target.fiiles[0];
+    const handleFileInputChange = (e) => {
+        const file = e.target.files[0];
         setAvatar(file);
     }
 
@@ -30,7 +54,7 @@ const SignUp = () => {
             </div>
             <div className='mt-8 sm:mx-auto sm:w-full sm:max-w-md'>
                 <div className='bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10'>
-                    <form className='space-y-6'>
+                    <form onSubmit={handleSubmit} className='space-y-6'>
                         <div>
                             <label htmlFor='email' className='block text-sm font-medium text-gray-700'>
                                 Full Name
@@ -97,21 +121,21 @@ const SignUp = () => {
                                 <div className="mt-2 flex items-center">
                                     <span className='inline-block h-8 w-8 rounded-full overflow-hidden'>
                                         {
-                                            avatar ? 
-                                            (<img src={URL.createObjectURL(avatar)} alt="avatar" className='h-full w-full object-cover rounded-full'/>)
-                                            : (
-                                                <RxAvatar className="h-8 w-8"/>
-                                            )
+                                            avatar ?
+                                                (<img src={URL.createObjectURL(avatar)} alt="avatar" className='h-full w-full object-cover rounded-full' />)
+                                                : (
+                                                    <RxAvatar className="h-8 w-8" />
+                                                )
                                         }
                                     </span>
-                                    <label 
-                                    className='ml-5 flex items-center justify-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium tex-gray-700 bg-white hover:bg-gray-50'
-                                    htmlFor='file-input'>
-                                            <span>Upload File</span>
-                                            <input type='file' name='avatar' id='file-input' accept='.jpg,.jpeg,.png'
+                                    <label
+                                        className='ml-5 flex items-center justify-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium tex-gray-700 bg-white hover:bg-gray-50'
+                                        htmlFor='file-input'>
+                                        <span>Upload File</span>
+                                        <input type='file' name='avatar' id='file-input' accept='.jpg,.jpeg,.png'
                                             onChange={handleFileInputChange}
                                             className='sr-only'
-                                            />
+                                        />
                                     </label>
                                 </div>
                             </div>
