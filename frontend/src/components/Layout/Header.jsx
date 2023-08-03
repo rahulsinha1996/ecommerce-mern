@@ -2,9 +2,10 @@ import React, { useState } from 'react'
 import styles from '../../styles/styles'
 import { Link } from "react-router-dom";
 import { categoriesData, productData } from "../../static/data";
-import { AiOutlineSearch } from "react-icons/ai"
+import { AiOutlineHeart, AiOutlineSearch, AiOutlineShoppingCart } from "react-icons/ai"
 import { IoIosArrowDown, IoIosArrowForward, IoIosArrowUp } from "react-icons/io"
 import { BiMenuAltLeft } from "react-icons/bi"
+import { CgProfile } from "react-icons/cg";
 import DropDown from '../DropDown/DropDown';
 import Navbar from '../Navbar/Navbar';
 
@@ -27,7 +28,7 @@ const Header = ({ activeHeading }) => {
   }
 
   window.addEventListener('scroll', () => {
-    if (window.screenY > 70) {
+    if (window.scrollY > 70) {
       setActive(true)
     }
     else {
@@ -86,7 +87,8 @@ const Header = ({ activeHeading }) => {
       </div>
       <div className={`${active === true ? "shadow-sm fixed top-0 left-0 z-10" : null} transition hidden 800px:flex items-center justify-between w-full bg-[#3321c8] h-[60px]`}>
         <div className={`${styles.section} relative ${styles.noramlFlex} justify-between`}>
-          <div>
+          
+          <div onClick={() => setDropDown(!dropDown)}>
             <div className="relative h-[60px] mt-[10px] w-[270px] hidden 1000px:block">
               <BiMenuAltLeft size={30} className='absolute top-3 left-2' />
               <button
@@ -125,13 +127,43 @@ const Header = ({ activeHeading }) => {
               active={activeHeading}
             />
           </div>
-          <div>
-            <div className={`${styles.noramlFlex}`}>
-                <div className='relative cursor-pointer mr-[15px]'>
 
-                </div>
+          <div className='flex'>
+            <div className={`${styles.noramlFlex}`}>
+              <div className='relative cursor-pointer mr-[15px]'>
+                <AiOutlineHeart
+                  size={30}
+                  color='rgb(255 255 255 / 83%)'
+                />
+                <span className='absolute right-0 top-0 rounded-full bg-[#3bc177] w-4 h-4 top right p-0 m=0 text-white font-mono text-[12px] leading-tight text-center'>
+                  0
+                </span>
+              </div>
+            </div>
+            <div className={`${styles.noramlFlex}`}>
+              <div className='relative cursor-pointer mr-[15px]'>
+                <AiOutlineShoppingCart
+                  size={30}
+                  color='rgb(255 255 255 / 83%)'
+                />
+                <span className='absolute right-0 top-0 rounded-full bg-[#3bc177] w-4 h-4 top right p-0 m=0 text-white font-mono text-[12px] leading-tight text-center'>
+                  1
+                </span>
+              </div>
+            </div>
+            <div className={`${styles.noramlFlex}`}>
+              <div className='relative cursor-pointer mr-[15px]'>
+
+                <Link to={"/login"}>
+                  <CgProfile
+                    size={30}
+                    color='rgb(255 255 255 / 83%)'
+                  />
+                </Link>
+              </div>
             </div>
           </div>
+
         </div>
       </div>
     </>
