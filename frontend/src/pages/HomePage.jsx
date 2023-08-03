@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
+import Header from '../components/Layout/Header';
 
 const HomePage = () => {
+  const [activeHeading, setActiveHeading]=useState(1);
   return (
-    <div>HomePage</div>
+    <div>
+      <Header activeHeading={activeHeading}/>
+    </div>
   )
 }
 
