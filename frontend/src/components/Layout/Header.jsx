@@ -8,10 +8,14 @@ import { BiMenuAltLeft } from "react-icons/bi"
 import { CgProfile } from "react-icons/cg";
 import DropDown from '../DropDown/DropDown';
 import Navbar from '../Navbar/Navbar';
+import { useSelector } from "react-redux";
+import { backend_url } from '../../server';
 
 
 
 const Header = ({ activeHeading }) => {
+  const user=useSelector((state)=>state)
+  console.log(user)
   const [seachTerm, setSearchTerm] = useState(null);
   const [searchData, setSearchData] = useState([]);
   const [active, setActive] = useState(false);
@@ -87,7 +91,7 @@ const Header = ({ activeHeading }) => {
       </div>
       <div className={`${active === true ? "shadow-sm fixed top-0 left-0 z-10" : null} transition hidden 800px:flex items-center justify-between w-full bg-[#3321c8] h-[60px]`}>
         <div className={`${styles.section} relative ${styles.noramlFlex} justify-between`}>
-          
+
           <div onClick={() => setDropDown(!dropDown)}>
             <div className="relative h-[60px] mt-[10px] w-[270px] hidden 1000px:block">
               <BiMenuAltLeft size={30} className='absolute top-3 left-2' />
@@ -154,12 +158,19 @@ const Header = ({ activeHeading }) => {
             <div className={`${styles.noramlFlex}`}>
               <div className='relative cursor-pointer mr-[15px]'>
 
-                <Link to={"/login"}>
-                  <CgProfile
-                    size={30}
-                    color='rgb(255 255 255 / 83%)'
-                  />
-                </Link>
+                {/* {isAuthenticated ? (
+                  <Link to={"/profile"}>
+                    <img src={`${backend_url}${user?.avatar}`} alt='' />
+                  </Link>
+                ) : (
+                  <Link to={"/login"}>
+                    <CgProfile
+                      size={30}
+                      color='rgb(255 255 255 / 83%)'
+                    />
+                  </Link>
+                )
+                } */}
               </div>
             </div>
           </div>

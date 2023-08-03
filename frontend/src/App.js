@@ -1,24 +1,21 @@
 import React, { useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { ActivationPage, LoginPage, SignUpPage, HomePage, ProductsPage, BestSellingPage, EventsPage } from "./Routes";
+import { ActivationPage, LoginPage, SignUpPage, HomePage, ProductsPage, BestSellingPage, EventsPage, FAQPage } from "./Routes";
 import "./App.css";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from "axios";
 import { server } from "./server";
+import { useDispatch } from "react-redux";
+import { getUser } from "./redux/reducers/user";
 
 
 function App() {
+  const dispatch=useDispatch();
 
-
-  // useEffect(()=>{
-  //   axios.get(`${server}/user/getuser`,{withCredentials:true}).then((res)=>{
-  //     console.log(res.data)
-  //     // toast.success(res.data.message)
-  //   }).catch((err)=>{
-  //     toast.error(err.response.data.message);
-  //   })
-  // },[])
+  useEffect(()=>{
+    dispatch(getUser());
+  },[])
   return (
     <BrowserRouter>
       <Routes>
@@ -29,6 +26,7 @@ function App() {
         <Route path="/products" element={<ProductsPage/>}/>
         <Route path="/best-selling" element={<BestSellingPage/>}/>
         <Route path="/events" element={<EventsPage/>}/>
+        <Route path="/faq" element={<FAQPage/>}/>
       </Routes>
       <ToastContainer />
     </BrowserRouter>
