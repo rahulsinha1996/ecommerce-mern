@@ -1,5 +1,5 @@
 // userSlice.js
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { server } from '../../server';
 
@@ -18,22 +18,13 @@ const initState={
 const userSlice = createSlice({
     name: 'user',
     initState,
-    reducers: {},
-    extraReducers: (builder) => {
-        builder
-            .addCase(getUser.pending, (state) => {
-                state.loading = true;
-                state.error = null;
-            })
-            .addCase(getUser.fulfilled, (state, action) => {
-                state.loading = false;
-                state.user = action.payload;
-            })
-            .addCase(getUser.rejected, (state, action) => {
-                state.loading = false;
-                state.error = action.error.message;
-            });
+    reducers: {
+        getUser((state,action)=>{
+            
+        })
+
     },
+   
 });
 
 export default userSlice.reducer;
