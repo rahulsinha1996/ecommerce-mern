@@ -14,8 +14,8 @@ import { backend_url } from '../../server';
 
 
 const Header = ({ activeHeading }) => {
-  const user=useSelector((state)=>state)
-  console.log(user)
+  const user=useSelector((state)=>state.user)
+  console.log("user",user)
   const [seachTerm, setSearchTerm] = useState(null);
   const [searchData, setSearchData] = useState([]);
   const [active, setActive] = useState(false);
@@ -158,9 +158,9 @@ const Header = ({ activeHeading }) => {
             <div className={`${styles.noramlFlex}`}>
               <div className='relative cursor-pointer mr-[15px]'>
 
-                {/* {isAuthenticated ? (
+                {user.isAuthenticated ? (
                   <Link to={"/profile"}>
-                    <img src={`${backend_url}${user?.avatar}`} alt='' />
+                    <img className='h-[45px] w-[45p]' src={'https://cdn.pixabay.com/photo/2015/03/04/22/35/avatar-659651_640.png'} alt='' />
                   </Link>
                 ) : (
                   <Link to={"/login"}>
@@ -170,7 +170,7 @@ const Header = ({ activeHeading }) => {
                     />
                   </Link>
                 )
-                } */}
+                }
               </div>
             </div>
           </div>

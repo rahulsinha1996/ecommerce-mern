@@ -6,15 +6,18 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from "axios";
 import { server } from "./server";
-import { useDispatch } from "react-redux";
-import { getUser } from "./redux/reducers/user";
+import { useDispatch, useSelector } from "react-redux";
+import { getUser, getUserRequest } from "./redux/reducers/user";
+
 
 
 function App() {
   const dispatch=useDispatch();
+  const data=useSelector((state)=>state)
+  console.log(data)
 
   useEffect(()=>{
-    dispatch(getUser());
+    dispatch(getUserRequest())
   },[])
   return (
     <BrowserRouter>
