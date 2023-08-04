@@ -11,6 +11,7 @@ import Navbar from '../Navbar/Navbar';
 import { useSelector } from "react-redux";
 import { backend_url } from '../../server';
 import Cart from '../Cart/Cart';
+import Wishlist from '../Wishlist/Wishlist';
 
 
 
@@ -137,7 +138,9 @@ const Header = ({ activeHeading }) => {
 
           <div className='flex'>
             <div className={`${styles.noramlFlex}`}>
-              <div className='relative cursor-pointer mr-[15px]'>
+              <div 
+              onClick={()=>setOpenWishlist(true)}
+              className='relative cursor-pointer mr-[15px]'>
                 <AiOutlineHeart
                   size={30}
                   color='rgb(255 255 255 / 83%)'
@@ -149,7 +152,7 @@ const Header = ({ activeHeading }) => {
             </div>
             <div className={`${styles.noramlFlex}`}>
               <div className='relative cursor-pointer mr-[15px]'
-              onClick={()=>setOpenCart(true)}
+                onClick={() => setOpenCart(true)}
               >
                 <AiOutlineShoppingCart
                   size={30}
@@ -180,7 +183,13 @@ const Header = ({ activeHeading }) => {
             </div>
 
             {openCart ? (
-              <Cart setOpenCart={setOpenCart}/>
+              <Cart setOpenCart={setOpenCart} />
+            ) : null
+
+            }
+
+            {openWishlist ? (
+              <Wishlist setOpenWishlist={setOpenWishlist} />
             ) : null
 
             }

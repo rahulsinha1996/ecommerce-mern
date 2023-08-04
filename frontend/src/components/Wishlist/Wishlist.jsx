@@ -6,7 +6,7 @@ import styles from '../../styles/styles';
 import CartSingle from '../CartSingle/CartSingle';
 import { Link } from 'react-router-dom';
 
-const Cart = ({ setOpenCart }) => {
+const Wishlist = ({ setOpenWishlist }) => {
 
     const cartData = [
         {
@@ -35,7 +35,7 @@ const Cart = ({ setOpenCart }) => {
                         <RxCross1
                             size={25}
                             className='cursor-pointer'
-                            onClick={() => setOpenCart(false)}
+                            onClick={() => setOpenWishlist(false)}
                         />
                     </div>
 
@@ -69,4 +69,4 @@ const Cart = ({ setOpenCart }) => {
     )
 }
 
-export default Cart;
+export default Wishlist;

@@ -3,7 +3,7 @@ import styles from '../../styles/styles';
 import { HiOutlineMinus, HiPlus } from "react-icons/hi"
 import { RxCross1 } from 'react-icons/rx';
 
-const CartSingle = ({ data }) => {
+const SingleWishlist = ({ data }) => {
     const [value, setValue] = useState(1);
 
     const totalPrice = data.price * value;
@@ -44,4 +44,4 @@ const CartSingle = ({ data }) => {
     )
 }
 
-export default CartSingle;
+export default SingleWishlist;
