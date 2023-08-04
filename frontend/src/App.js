@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import axios from "axios";
 import { server } from "./server";
 import { useDispatch, useSelector } from "react-redux";
-import { getUser, getUserRequest } from "./redux/reducers/user";
+import { getUserRequest } from "./redux/reducers/user";
 
 
 
