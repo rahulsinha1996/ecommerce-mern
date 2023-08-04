@@ -4,6 +4,7 @@ import { IoBagHandleOutline } from "react-icons/io5"
 
 import styles from '../../styles/styles';
 import CartSingle from '../CartSingle/CartSingle';
+import { Link } from 'react-router-dom';
 
 const Cart = ({ setOpenCart }) => {
 
@@ -34,26 +35,34 @@ const Cart = ({ setOpenCart }) => {
                         <RxCross1
                             size={25}
                             className='cursor-pointer'
-                            onClick={()=>setOpenCart(false)}
+                            onClick={() => setOpenCart(false)}
                         />
                     </div>
 
-                    <div className={`${styles.noramlFlex} p-4`}>
-                            <IoBagHandleOutline size={25}/>
-                            <h5 className='pl-2 text-[20px] font-[500]'>
-                                3 items
-                            </h5>
+                    <div className={`${styles.noramlFlex} p-2`}>
+                        <IoBagHandleOutline size={25} />
+                        <h5 className='pl-2 text-[20px] font-[500]'>
+                            3 items
+                        </h5>
                     </div>
 
-                    <br/>
+                    <br />
                     <div className='w-full border-t'>
                         {
-                            cartData && cartData.map((i,index)=>(
-                                <CartSingle data={i}/>
+                            cartData && cartData.map((i, index) => (
+                                <CartSingle data={i} />
                             ))
                         }
                     </div>
-
+                </div>
+                <div className="px-5 mb-3">
+                    <Link to={"/checkout"}>
+                        <div className='h-[45px] flex items-center justify-center w-[100%] bg-[#e44343] rounded-[5px]'>
+                            <h1 className='text-[#fff] text-[18px]'>
+                                Checkout Now
+                            </h1>
+                        </div>
+                    </Link>
                 </div>
             </div>
         </div>

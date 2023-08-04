@@ -11,7 +11,7 @@ const CartSingle = ({ data }) => {
 
 
     return (
-        <div className='border-b p-4'>
+        <div className='border-b p-3'>
             <div className='w-full flex items-center'>
                 <div>
                     <div
