@@ -5,6 +5,7 @@ import { IoBagHandleOutline } from "react-icons/io5"
 import styles from '../../styles/styles';
 import CartSingle from '../CartSingle/CartSingle';
 import { Link } from 'react-router-dom';
+import SingleWishlist from '../SingleWishlist/SingleWishlist';
 
 const Wishlist = ({ setOpenWishlist }) => {
 
@@ -50,7 +51,7 @@ const Wishlist = ({ setOpenWishlist }) => {
                     <div className='w-full border-t'>
                         {
                             cartData && cartData.map((i, index) => (
-                                <CartSingle data={i} />
+                                <SingleWishlist data={i} />
                             ))
                         }
                     </div>
