@@ -21,7 +21,7 @@ const SingleWishlist = ({ data }) => {
                     <h1>{data.name}</h1>
                     <h4 className='font-[400] text-[15px] text-[#0000082]'>{data.price} X {value}</h4>
                     <h4 className='font-[600] text-[17px] pt-[3px] text-[#d02222] font-Roboto'>
-                        {totalPrice}
+                        Rs {totalPrice}
                     </h4>
                 </div>
 
