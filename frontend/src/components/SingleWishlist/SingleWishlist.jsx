@@ -13,7 +13,7 @@ const SingleWishlist = ({ data }) => {
     return (
         <div className='border-b p-4'>
             <div className='w-full flex items-center'>
-                <RxCross1 size={25} className='text-red cursor-pointer' />
+                <RxCross1 size={25} className='cursor-pointer' />
                 <img src='https://m.media-amazon.com/images/I/31Vle5fVdaL.jpg'
                     className='w-[80px] h-min ml-2 mr-2 rounded-[5px]'
                     alt='' />
