@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import styles from '../../styles/styles';
 import { HiOutlineMinus, HiPlus } from "react-icons/hi"
 import { RxCross1 } from 'react-icons/rx';
+import { BsCartPlus} from 'react-icons/bs'
 
 const SingleWishlist = ({ data }) => {
     const [value, setValue] = useState(1);
@@ -23,6 +24,9 @@ const SingleWishlist = ({ data }) => {
                     <h4 className='font-[600] text-[17px] pt-[3px] text-[#d02222] font-Roboto'>
                         Rs {totalPrice}
                     </h4>
+                </div>
+                <div>
+                    <BsCartPlus size={20} className='cursor-pointer' title='Add to cart'/>
                 </div>
 
             </div>
